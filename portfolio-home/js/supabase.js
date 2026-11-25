@@ -1,13 +1,9 @@
-// Configuração centralizada do Supabase.
-// Quando quiser, troque apenas estas duas constantes pelos dados do seu projeto.
-export const SUPABASE_URL = 'https://hjuscxfnsigrjbemmgqs.supabase.co';
-// Use apenas a chave "publishable"/"anon" aqui. NUNCA a "service_role".
-export const SUPABASE_ANON_KEY = 'sb_publishable_ISScGeHISLRCRqqOlVI3rA_mBKko7CU';
+
+export const SUPABASE_URL = 'https://bntwszbddppqatjjibsh.supabase.co';
+export const SUPABASE_ANON_KEY = 'sb_publishable_nJ7NMx8j1D8P_qiXr6jwOA_Q_ZwAxSa';
 
 import { createClient } from 'https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm';
 
-// "Lembrar de mim": true = localStorage (continua logado ao fechar o navegador);
-// false = sessionStorage (sessão Some quando a aba/navegador fecha).
 let lembrarDeMim = true;
 
 export function definirLembrar(lembrar) {
@@ -22,7 +18,7 @@ const storageSupabase = {
   getItem(chave) {
     const atual = storageAlvo().getItem(chave);
     if (atual !== null) return atual;
-    // Não perde uma sessão já existente enquanto o usuário não escolhe.
+  
     return window.localStorage.getItem(chave) ?? window.sessionStorage.getItem(chave);
   },
   setItem(chave, valor) {
@@ -36,7 +32,6 @@ const storageSupabase = {
   }
 };
 
-// Evita que o login fique carregando para sempre se o projeto estiver pausado/sem rede.
 async function fetchWithTimeout(url, options = {}) {
   const controller = new AbortController();
   const timeoutId = setTimeout(() => controller.abort(), 6000);
