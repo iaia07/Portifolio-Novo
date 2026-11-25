@@ -1,0 +1,165 @@
+/* Página "Anexos" — galeria em forma de caderno, com foto em destaque. */
+
+.ax-page { padding-bottom: 70px; }
+
+/* ---------- Cabeçalho da página ---------- */
+.ax-heading { text-align: center; padding: 50px 4% 24px; }
+.ax-title-main { font-size: clamp(2.8rem, 5vw, 4.6rem); line-height: 1; }
+.ax-script { margin-top: 10px; font: 1.45rem var(--script); color: var(--rose-dark); transform: rotate(-2deg); }
+
+/* ---------- Moldura da galeria ---------- */
+.ax-gallery {
+  width: min(100%, 1040px);
+  margin: auto;
+  padding: 0 4%;
+  outline: none;
+}
+.ax-gallery:focus-visible .ax-frame { box-shadow: 0 0 0 3px rgba(185, 130, 136, .45), 0 18px 34px rgba(70, 52, 33, .16); }
+.ax-frame {
+  position: relative;
+  padding: 18px;
+  background: linear-gradient(145deg, #fffdf8, #f6f0e6);
+  border: 1px solid rgba(112, 92, 66, .22);
+  box-shadow: 0 18px 34px rgba(70, 52, 33, .16);
+  transform: rotate(-.4deg);
+}
+.ax-frame::before {
+  content: ''; position: absolute; inset: 6px;
+  border: 1px dashed rgba(112, 92, 66, .25); pointer-events: none; z-index: 2;
+}
+.ax-tape {
+  position: absolute; width: 96px; height: 26px; z-index: 4;
+  clip-path: polygon(0 12%, 6% 0, 14% 10%, 22% 2%, 30% 11%, 39% 1%, 48% 10%, 57% 0, 66% 11%, 75% 2%, 84% 10%, 93% 1%, 100% 6%, 99% 88%, 92% 100%, 84% 90%, 75% 99%, 66% 89%, 57% 100%, 48% 90%, 39% 99%, 30% 89%, 22% 100%, 14% 90%, 6% 99%, 0 90%);
+  box-shadow: 0 2px 5px rgba(70, 52, 33, .18);
+  background: repeating-linear-gradient(90deg, rgba(220, 185, 180, .75) 0 7px, rgba(233, 206, 198, .62) 7px 13px);
+}
+.ax-tape-left { top: -13px; left: 6%; transform: rotate(-30deg); }
+.ax-tape-right { top: -13px; right: 6%; transform: rotate(30deg); }
+
+/* ---------- Palco e slides ---------- */
+.ax-stage {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(255, 253, 246, .9), transparent 70%),
+    linear-gradient(135deg, rgba(201, 169, 124, .18), rgba(154, 165, 141, .12));
+}
+.ax-track {
+  display: flex;
+  height: 100%;
+  transition: transform .65s cubic-bezier(.22, .8, .24, 1);
+}
+.ax-slide {
+  flex: 0 0 100%;
+  height: 100%;
+  margin: 0;
+  padding: 16px;
+  display: grid;
+  place-items: center;
+}
+.ax-slide img {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  box-shadow: 0 12px 26px rgba(70, 52, 33, .22);
+  filter: saturate(.94) contrast(.98);
+}
+
+/* ---------- Controles ---------- */
+.ax-nav {
+  position: absolute; top: 50%; z-index: 5;
+  width: 46px; height: 46px;
+  display: grid; place-items: center;
+  padding: 0 0 4px;
+  border: 1px solid rgba(144, 97, 105, .45);
+  border-radius: 50%;
+  background: rgba(247, 242, 232, .95);
+  box-shadow: 0 6px 16px rgba(70, 52, 33, .2);
+  color: var(--rose-dark);
+  font: 2rem/1 var(--serif);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: background .2s, color .2s, transform .2s;
+}
+.ax-prev { left: 24px; }
+.ax-next { right: 24px; }
+.ax-nav:hover { background: var(--paper-light); color: var(--rose-dark); transform: translateY(-50%) scale(1.07); }
+.ax-nav:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+/* ---------- Legenda que acompanha a foto ---------- */
+.ax-caption {
+  max-width: 720px;
+  margin: 26px auto 0;
+  padding: 26px 30px;
+  text-align: center;
+  background: rgba(250, 246, 237, .72);
+  border: 1px dashed rgba(112, 92, 66, .34);
+}
+.ax-caption.is-changing { animation: ax-caption-in .45s ease both; }
+.ax-counter { font-size: .6rem; letter-spacing: .18em; color: var(--rose-dark); }
+.ax-caption-title { margin: 10px 0 8px; font: 500 1.7rem var(--serif); }
+.ax-caption-text { font-size: .9rem; line-height: 1.8; color: #5d5144; }
+
+/* ---------- Indicadores e miniaturas ---------- */
+.ax-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+.ax-dot {
+  width: 10px; height: 10px; padding: 0;
+  border: 1px solid var(--rose-dark); border-radius: 50%;
+  background: transparent; cursor: pointer;
+  transition: background .2s, transform .2s;
+}
+.ax-dot:hover { transform: scale(1.2); }
+.ax-dot.is-active { background: var(--rose); }
+.ax-dot:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+.ax-thumbs { display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+.ax-thumb {
+  width: 92px; height: 68px; padding: 3px;
+  background: var(--paper-light);
+  border: 1px solid rgba(112, 92, 66, .25);
+  cursor: pointer;
+  transition: transform .2s, border-color .2s, box-shadow .2s;
+}
+.ax-thumb img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.ax-thumb:hover { transform: translateY(-3px); }
+.ax-thumb.is-active { border-color: var(--rose); box-shadow: 0 6px 14px rgba(70, 52, 33, .18); }
+.ax-thumb:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+.ax-gallery.is-single .ax-nav,
+.ax-gallery.is-single .ax-dots,
+.ax-gallery.is-single .ax-thumbs { display: none; }
+
+/* ---------- Voltar ---------- */
+.ax-back { text-align: center; margin-top: 34px; }
+.ax-back a {
+  display: inline-block; padding-bottom: 4px;
+  font-size: .68rem; letter-spacing: .12em; text-decoration: none;
+  color: var(--muted); border-bottom: 1px solid var(--line);
+}
+.ax-back a:hover { color: var(--rose-dark); border-bottom-color: var(--rose); }
+
+@keyframes ax-caption-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 760px) {
+  .ax-heading { padding: 40px 4% 18px; }
+  .ax-frame { padding: 12px; }
+  .ax-stage { aspect-ratio: 4 / 3; }
+  .ax-slide { padding: 10px; }
+  .ax-nav { width: 38px; height: 38px; font-size: 1.6rem; }
+  .ax-prev { left: 12px; }
+  .ax-next { right: 12px; }
+  .ax-caption { margin-top: 20px; padding: 22px 20px; }
+  .ax-caption-title { font-size: 1.4rem; }
+  .ax-back { margin-top: 26px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ax-caption.is-changing { animation: none; }
+}

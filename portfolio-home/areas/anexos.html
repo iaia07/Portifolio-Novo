@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ede5d8">
+  <meta name="description" content="Galeria de imagens e registros do portfólio de Iara Kethelyn.">
+  <title>Anexos | Iara Kethelyn</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Caveat:wght@500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="./anexos.css">
+</head>
+<body>
+  <div class="paper-grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a class="wordmark" href="../home.html" aria-label="Voltar ao início">IARA K.</a>
+    <div class="header-right">
+      <nav class="header-nav" id="header-nav" aria-label="Páginas do portfólio">
+        <a href="./sobre.html">Sobre mim</a>
+        <a href="./project.html">Projetos</a>
+        <a href="./atividades.html">Atividades</a>
+        <a href="./linguagens.html">Linguagens</a>
+        <a href="./matematica.html">Matemática</a>
+        <a href="./natureza.html">Natureza</a>
+        <a href="./humanas.html">Humanas</a>
+        <a href="./senai.html">Senai</a>
+        <a href="./anexos.html" aria-current="page">Anexos</a>
+        <a href="./contatos.html">Contatos</a>
+      </nav>
+      <span class="header-note">PORTFÓLIO • 2026</span>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-controls="header-nav" aria-expanded="false">
+        <span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="anexos" class="ax-page">
+    <div class="ax-heading">
+      <h1 class="ax-title-main">Anexos<span class="pink-period">.</span></h1>
+    </div>
+
+    <!-- Para adicionar fotos: duplique um element figure.ax-slide, troque o src
+         e os atributos data-title / data-text. O carrossel se ajusta sozinho. -->
+    <section class="ax-gallery" aria-label="Galeria de anexos" aria-roledescription="carrossel" tabindex="0">
+      <div class="ax-frame">
+        <span class="ax-tape ax-tape-left" aria-hidden="true"></span>
+        <span class="ax-tape ax-tape-right" aria-hidden="true"></span>
+
+        <div class="ax-stage">
+          <div class="ax-track">
+            <figure class="ax-slide is-active"
+                    data-title="Primeiro registro"
+                    data-text="Um recorte guardado com carinho. É aqui que novas imagens e suas histórias vão aparecer."
+                    role="group" aria-roledescription="slide" aria-label="1 de 2">
+              <img src="../img/Copia de Copia de Kercia.png" alt="Imagem de anexo do portfólio">
+            </figure>
+
+            <figure class="ax-slide"
+                    data-title="Segundo registro — imagem de teste"
+                    data-text="Esta é uma imagem de paisagem usada para testar a troca de foto e de texto. Substitua pelo seu próximo anexo quando quiser."
+                    role="group" aria-roledescription="slide" aria-label="2 de 2">
+              <img src="../img/teste-paisagem.jpg" alt="Imagem de paisagem de teste no carrossel">
+            </figure>
+          </div>
+
+          <button class="ax-nav ax-prev" type="button" aria-label="Foto anterior">‹</button>
+          <button class="ax-nav ax-next" type="button" aria-label="Próxima foto">›</button>
+        </div>
+      </div>
+
+      <div class="ax-caption" aria-live="polite">
+        <p class="ax-counter">ANEXO 01 / 02</p>
+        <h2 class="ax-caption-title">Primeiro registro</h2>
+        <p class="ax-caption-text">Um recorte guardado com carinho. É aqui que novas imagens e suas histórias vão aparecer.</p>
+      </div>
+
+      <div class="ax-dots" aria-label="Escolher foto"></div>
+      <div class="ax-thumbs" aria-label="Miniaturas das fotos"></div>
+    </section>
+
+    <div class="ax-back">
+      <a href="../home.html">← voltar ao início</a>
+    </div>
+  </main>
+
+  <script src="../js/home.js"></script>
+  <script src="./anexos.js" defer></script>
+</body>
+</html>

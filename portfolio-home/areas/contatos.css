@@ -1,0 +1,153 @@
+/* Página "Contatos" — o cartão pessoal como peça central. */
+
+.ct-page { padding-bottom: 70px; }
+
+/* ---------- Título ---------- */
+.ct-heading { text-align: center; padding: 50px 4% 12px; }
+.ct-title { font-size: clamp(2.8rem, 5vw, 4.6rem); line-height: 1; }
+.ct-script { margin-top: 10px; font: 1.45rem var(--script); color: var(--rose-dark); transform: rotate(-2deg); }
+
+/* ---------- Destaque do cartão ---------- */
+.ct-feature {
+  position: relative;
+  width: min(100%, 800px);
+  margin: 26px auto 0;
+  padding: 24px 26px 30px;
+}
+.ct-glow {
+  position: absolute; inset: -6% -4%;
+  z-index: 0; pointer-events: none;
+  background: radial-gradient(ellipse at 50% 50%, rgba(185, 130, 136, .28), rgba(201, 169, 124, .14) 45%, transparent 72%);
+  filter: blur(6px);
+}
+.ct-feature .tape-top { top: 2px; left: 10%; transform: rotate(-28deg); }
+.ct-feature .tape-bottom { bottom: 12px; right: 8%; left: auto; transform: rotate(26deg); }
+.ct-spark {
+  position: absolute; z-index: 4;
+  color: var(--rose); font-size: 1.5rem; pointer-events: none;
+}
+.ct-spark-one { top: 4%; right: 3%; }
+.ct-spark-two { bottom: 8%; left: 3%; font-size: 1.1rem; }
+
+.ct-card {
+  position: relative; z-index: 2;
+  overflow: hidden;
+  border: 2px solid rgba(43, 36, 29, .85);
+  border-radius: 28px;
+  background: #efe4da;
+  box-shadow: 0 26px 46px rgba(70, 52, 33, .26), 0 6px 14px rgba(70, 52, 33, .16);
+  transform: rotate(-.6deg);
+}
+.ct-card::after {
+  content: ''; position: absolute; inset: 7px;
+  border: 1px dashed rgba(112, 92, 66, .32);
+  border-radius: 22px; pointer-events: none;
+}
+.ct-card-top {
+  min-height: 250px;
+  padding: 26px 24px 22px;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(255, 253, 246, .8), transparent 65%),
+    #efe4da;
+}
+.ct-card-label { font-size: .58rem; letter-spacing: .22em; color: var(--muted); }
+.ct-card-top h2 {
+  margin: 4px 0 2px;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.8rem, 7vw, 4.8rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #073c6d;
+  letter-spacing: -.02em;
+}
+.ct-card-role { font: 500 .85rem var(--sans); letter-spacing: .16em; color: #073c6d; }
+
+/* ---------- Imagem que alterna ---------- */
+.ct-card-screen {
+  min-height: 340px;
+  display: grid;
+  place-items: center;
+  padding: 22px;
+  border-top: 1px dashed rgba(112, 92, 66, .32);
+  background:
+    radial-gradient(ellipse at 50% 45%, rgba(255, 253, 246, .85), transparent 70%),
+    #efe4da;
+}
+.ct-card-image { display: block; object-fit: contain; max-height: 300px; }
+.ct-card-image:first-child { width: min(62%, 300px); height: auto; }
+.ct-card-image:last-child { width: 100%; height: auto; }
+.ct-card-image[hidden] { display: none; }
+
+.ct-flip-wrap { position: relative; z-index: 3; text-align: center; margin-top: 20px; }
+.ct-flip {
+  padding: 10px 24px;
+  border: 1px solid var(--rose-dark);
+  border-radius: 999px;
+  background: var(--paper-light);
+  color: var(--rose-dark);
+  font: 600 .7rem var(--sans);
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.ct-flip:hover { background: var(--rose-dark); color: var(--paper-light); }
+.ct-flip:focus-visible { outline: 2px solid var(--rose); outline-offset: 3px; }
+
+/* ---------- Meios de contato ---------- */
+.ct-chips {
+  display: flex; justify-content: center; flex-wrap: wrap; gap: 14px;
+  width: min(100% - 48px, 900px); margin: 34px auto 0;
+}
+.ct-chip {
+  display: flex; align-items: center; gap: 12px;
+  max-width: 100%;
+  padding: 12px 18px;
+  text-decoration: none;
+  background: rgba(250, 246, 237, .78);
+  border: 1px dashed rgba(112, 92, 66, .38);
+  box-shadow: 0 8px 18px rgba(70, 52, 33, .10);
+  color: var(--ink);
+  font-size: .82rem;
+  overflow-wrap: anywhere;
+}
+.ct-chip:hover { background: var(--paper-light); border-color: var(--rose); }
+.ct-chip-icon {
+  flex: 0 0 auto;
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: rgba(185, 130, 136, .16);
+  color: var(--rose-dark);
+  font-size: 1rem;
+}
+.ct-chip small { display: block; font-size: .58rem; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); margin-bottom: 3px; }
+
+/* ---------- Botão iniciar ---------- */
+.ct-back { text-align: center; margin-top: 38px; }
+.ct-back-button {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 12px 30px;
+  border: 1px solid var(--rose-dark);
+  border-radius: 999px;
+  background: rgba(247, 242, 232, .9);
+  color: var(--ink);
+  text-decoration: none;
+  font-size: .72rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase;
+  box-shadow: 0 8px 18px rgba(70, 52, 33, .12);
+}
+.ct-back-button:hover { background: var(--rose-dark); color: var(--paper-light); }
+
+/* ---------- Responsivo ---------- */
+@media (max-width: 760px) {
+  .ct-heading { padding: 40px 4% 8px; }
+  .ct-feature { padding: 18px 14px 22px; }
+  .ct-card { border-radius: 20px; }
+  .ct-card::after { border-radius: 15px; }
+  .ct-card-top { min-height: 190px; padding: 20px 16px; }
+  .ct-card-screen { min-height: 250px; padding: 16px; }
+  .ct-card-image { max-height: 220px; }
+  .ct-chips { width: min(100% - 36px, 900px); flex-direction: column; }
+  .ct-chip { width: 100%; }
+}

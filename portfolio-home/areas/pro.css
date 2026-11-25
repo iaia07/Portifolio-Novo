@@ -1,0 +1,104 @@
+/* Página "Projetos" — dois registros em pilha, no mesmo papel do restante do portfólio.
+   Os estilos do painel de ampliação vêm de eixos.css. */
+
+.pr-page { padding-bottom: 70px; }
+
+/* ---------- Abertura ---------- */
+.pr-heading { text-align: center; padding: 50px 4% 18px; }
+.pr-title { font-size: clamp(2.8rem, 5vw, 4.6rem); line-height: 1; }
+.pr-script {
+  margin-top: 10px;
+  font: 1.45rem var(--script);
+  color: var(--rose-dark);
+  transform: rotate(-2deg);
+}
+
+/* ---------- Pilha de projetos ---------- */
+.pr-list {
+  width: min(100% - 36px, 860px);
+  margin: 30px auto 0;
+  display: flex;
+  flex-direction: column;
+  gap: 42px;
+}
+.pr-shot {
+  position: relative;
+  padding: 18px;
+  background: linear-gradient(145deg, #fffdf8, #f6f0e6);
+  border: 1px solid rgba(112, 92, 66, .24);
+  box-shadow: 0 16px 30px rgba(70, 52, 33, .14);
+}
+.pr-shot::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border: 1px dashed rgba(112, 92, 66, .28);
+  pointer-events: none;
+}
+.pr-shot:first-child { transform: rotate(-.5deg); }
+.pr-shot:last-child { transform: rotate(.5deg); }
+.pr-shot-head {
+  position: relative;
+  display: flex; justify-content: space-between; align-items: baseline; gap: 14px;
+  padding: 2px 6px 12px;
+}
+.pr-shot-label {
+  font: 500 1.25rem/1.2 var(--serif);
+  color: var(--ink);
+}
+.pr-shot-index {
+  font-size: .6rem; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--rose-dark);
+}
+.pr-shot-frame {
+  position: relative;
+  display: grid; place-items: center;
+  padding: 16px;
+  background: rgba(255, 253, 246, .92);
+  border: 1px dashed rgba(112, 92, 66, .28);
+}
+.pr-shot-button {
+  appearance: none;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.pr-shot-button:focus-visible { outline: 2px solid var(--rose); outline-offset: 4px; }
+.pr-shot-button img {
+  display: block;
+  width: auto; max-width: 100%; height: auto;
+  margin: auto;
+  box-shadow: 0 10px 22px rgba(70, 52, 33, .18);
+}
+.pr-shot-hint {
+  position: relative;
+  padding: 12px 6px 0;
+  font: 1.05rem var(--script);
+  color: var(--rose-dark);
+  text-align: right;
+}
+
+/* ---------- Voltar ---------- */
+.pr-back { text-align: center; margin-top: 38px; }
+.pr-back a {
+  display: inline-block; padding-bottom: 4px;
+  font-size: .68rem; letter-spacing: .12em; text-decoration: none;
+  color: var(--muted);
+  border-bottom: 1px solid var(--line);
+}
+.pr-back a:hover { color: var(--rose-dark); border-bottom-color: var(--rose); }
+
+@media (max-width: 760px) {
+  .pr-heading { padding: 40px 4% 14px; }
+  .pr-list { width: min(100% - 24px, 860px); gap: 28px; }
+  .pr-shot { padding: 14px; }
+  .pr-shot:first-child, .pr-shot:last-child { transform: none; }
+  .pr-shot-frame { padding: 10px; }
+  .pr-shot-label { font-size: 1.1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pr-shot:first-child, .pr-shot:last-child { transform: none; }
+}
