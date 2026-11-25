@@ -74,7 +74,7 @@ async function entrar(event) {
   definirCarregando(true);
   definirMensagem('Verificando dados...', 'info');
 
-  const { error } = await entrarComRetentativa(email, senha);
+  const { data, error } = await entrarComRetentativa(email, senha);
 
   if (error) {
     definirCarregando(false);
@@ -89,6 +89,12 @@ async function entrar(event) {
     return;
   }
 
+  if (!data?.session) {
+    definirCarregando(false);
+    definirMensagem('Não foi possível iniciar a sessão. Confirme seu e-mail no Supabase.', 'error');
+    return;
+  }
+
   definirMensagem('Login realizado! Redirecionando...', 'success');
   setTimeout(() => window.location.assign(REDIRECT_URL), 500);
 }
@@ -96,3 +102,6 @@ async function entrar(event) {
 if (form) {
   form.addEventListener('submit', entrar);
 }
+
+// Sinaliza para o fallback do HTML que o módulo carregou corretamente.
+window.__loginPronto = true;
